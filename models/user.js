@@ -5,8 +5,9 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     username: { type: String, required: true },
-    pin: { type: String},
+    email: {type: String, required: true},
     password: { type: String, required: true, min: 6 },
+    pin: { type: String},
     balance: { type: Number, default: 0},
     date: { type: Date, default: Date.now}
   }

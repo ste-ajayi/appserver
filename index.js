@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 1200
 const cors = require('cors')
+const bodyParser = require('body-parser');
 const authenticationRoute = require("./routes/authentication")
 const mongoose = require('mongoose');
 
@@ -14,6 +15,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //MIDDLEWARES
 app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(function (req, res, next) {
     req.header("Content-Type: application/x-www-form-urlencoded");
     res.header("Access-Control-Allow-Origin", "*");
