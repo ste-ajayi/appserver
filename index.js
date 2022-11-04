@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 1200
 const cors = require('cors')
+const authenticationRoute = require("./routes/authentication")
 const mongoose = require('mongoose');
 
 const uri = 'mongodb+srv://amirize:Golda909@cluster0.iy2mxwp.mongodb.net/?retryWrites=true&w=majority'
@@ -27,13 +28,13 @@ app.use(function (req, res, next) {
     next();
 })
 
-app.get('/', (req, res) => {
-    res.send('sup')
-})
-
 app.get('/test', (req, res) => {
     res.send('this is a test')
 })
+
+//ROUTES
+app.use('/auth', authenticationRoute)
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
