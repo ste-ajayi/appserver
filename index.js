@@ -27,6 +27,10 @@ app.use(function(req, res, next) {
     next();
     })
 
+    app.get('/', (req, res) => {
+  res.send('sup')
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
   })
