@@ -13,24 +13,28 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //MIDDLEWARES
 app.use(cors())
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     req.header("Content-Type: application/x-www-form-urlencoded");
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", " GET, POST, OPTIONS, PUT, PATCH, DELETE")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token, x-refresh-token");
-    
+
     res.header(
         'Access-Control-Expose-Headers',
         'x-access-token, x-refresh-token'
     );
-    
-    next();
-    })
 
-    app.get('/', (req, res) => {
-  res.send('sup')
+    next();
+})
+
+app.get('/', (req, res) => {
+    res.send('sup')
+})
+
+app.get('/test', (req, res) => {
+    res.send('this is a test')
 })
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
-  })
+})
