@@ -4,6 +4,7 @@ const port = process.env.PORT || 1200
 const cors = require('cors')
 const bodyParser = require('body-parser');
 const authenticationRoute = require("./routes/authentication")
+const dashboardRoute = require("./routes/dashboard")
 const mongoose = require('mongoose');
 
 const uri = 'mongodb+srv://amirize:Golda909@cluster0.iy2mxwp.mongodb.net/?retryWrites=true&w=majority'
@@ -37,6 +38,7 @@ app.get('/test', (req, res) => {
 
 //ROUTES
 app.use('/auth', authenticationRoute)
+app.use('/', dashboardRoute)
 
 
 app.listen(port, () => {
