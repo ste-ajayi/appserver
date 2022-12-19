@@ -8,9 +8,9 @@ const userSchema = new Schema(
     email: {type: String, required: true},
     password: { type: String, required: true, min: 6 },
     pin: { type: String},
-    balance: { type: Number, default: 0},
+    balance: { type: Number, default: 100},
     date: { type: Date, default: Date.now}
   }
 );
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);``

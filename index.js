@@ -5,7 +5,9 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const authenticationRoute = require("./routes/authentication")
 const dashboardRoute = require("./routes/dashboard")
+const transactionRoute = require("./routes/transaction")
 const mongoose = require('mongoose');
+const axios = require('axios');
 
 const uri = 'mongodb+srv://amirize:Golda909@cluster0.iy2mxwp.mongodb.net/?retryWrites=true&w=majority'
 
@@ -32,13 +34,24 @@ app.use(function (req, res, next) {
     next();
 })
 
-app.get('/test', (req, res) => {
-    res.send('this is a test')
-})
+// app.get('/test', (req, res) => {
+// //     axios.get('https://api.kanye.rest')
+// //   .then((response) => res.json(JSON.stringify(response.data) ))
+// res.json({
+//     username: 'wisdom',
+//     balance: 67
+//  })
+   
+// })
+
+
+
+
 
 //ROUTES
 app.use('/auth', authenticationRoute)
 app.use('/', dashboardRoute)
+app.use('/', transactionRoute)
 
 
 app.listen(port, () => {
